@@ -1,0 +1,5 @@
+v1
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/transformed_silver_layer/part-00000-09d66af1-861b-431b-81d3-a189b29b2974-c000.snappy.parquet","size":2938,"isDir":false,"modificationTime":1777885616599,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/transformed_silver_layer/part-00001-ae874fed-63aa-424f-9d2e-f0227ccc4f10-c000.snappy.parquet","size":2924,"isDir":false,"modificationTime":1777885616599,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/transformed_silver_layer/part-00002-f530b2e5-0e36-4e21-b8d5-9ed92717e052-c000.snappy.parquet","size":2920,"isDir":false,"modificationTime":1777885616599,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/transformed_silver_layer/part-00003-911da4b5-060c-4e30-abc9-7cf437dc8e4f-c000.snappy.parquet","size":3053,"isDir":false,"modificationTime":1777885616599,"blockReplication":1,"blockSize":33554432,"action":"add"}
