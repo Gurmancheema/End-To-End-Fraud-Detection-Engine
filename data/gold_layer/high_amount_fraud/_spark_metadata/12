@@ -1,0 +1,3 @@
+v1
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/gold_layer/high_amount_fraud/part-00000-c24d6432-f688-4e46-bc05-87ddbe57becc-c000.snappy.parquet","size":1473,"isDir":false,"modificationTime":1777966991549,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/gold_layer/high_amount_fraud/part-00002-0951ed15-1029-42f1-aff9-b215bf17992b-c000.snappy.parquet","size":4013,"isDir":false,"modificationTime":1777966991474,"blockReplication":1,"blockSize":33554432,"action":"add"}

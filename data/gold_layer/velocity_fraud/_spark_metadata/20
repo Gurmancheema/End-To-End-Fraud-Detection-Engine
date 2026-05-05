@@ -1,0 +1,3 @@
+v1
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/gold_layer/velocity_fraud/part-00000-4d2fa9ad-0753-494e-a356-a75aed3fdc7a-c000.snappy.parquet","size":798,"isDir":false,"modificationTime":1777968341082,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/gold_layer/velocity_fraud/part-00048-a849c4c5-3280-41c1-9131-c12d2cac150e-c000.snappy.parquet","size":1738,"isDir":false,"modificationTime":1777968347385,"blockReplication":1,"blockSize":33554432,"action":"add"}

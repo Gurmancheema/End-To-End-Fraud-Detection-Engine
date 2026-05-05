@@ -64,7 +64,9 @@ def generate_high_amount_transaction():
 
 def generate_high_velocity_transaction(user_id):
     transaction = []
-
+     # FIX: same timestamp for all events
+    fixed_time = datetime.utcnow().isoformat()
+    
     for _ in range(6): # since the no of transactions should be 5 atleast
         transactions = {
         "transaction_id": str(uuid.uuid4()),
@@ -75,7 +77,7 @@ def generate_high_velocity_transaction(user_id):
 
         "transaction_amount": round(random.uniform(10.0, 20000.0), 2),
 
-        "transaction_time": datetime.utcnow().isoformat(),
+        "transaction_time": fixed_time,
 
         "device_id": f"device_{random.randint(1, 50)}",
 
@@ -84,7 +86,7 @@ def generate_high_velocity_transaction(user_id):
         "is_international": False
     }
     
-    transaction.append(transactions)
+        transaction.append(transactions)
 
     return transaction
  
@@ -125,6 +127,7 @@ if __name__ == "__main__":
                 # sending high velocity_transaction
                 print("HIGH VELOCITY fraud for user:",user_id)
                 for e in event:
+                    print("Sending HIGH VELOCITY event:",e)
                     producer.send("transactions",e)
 
             producer.flush()

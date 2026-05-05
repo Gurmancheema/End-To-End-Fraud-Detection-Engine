@@ -1,0 +1,5 @@
+v1
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/gold_layer/velocity_fraud/part-00000-74ef513b-6db2-4c03-9fb4-2a8596b39abd-c000.snappy.parquet","size":798,"isDir":false,"modificationTime":1777968847244,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/gold_layer/velocity_fraud/part-00018-7e073f10-a964-4eac-96f2-3c241ed77265-c000.snappy.parquet","size":1738,"isDir":false,"modificationTime":1777968849216,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/gold_layer/velocity_fraud/part-00037-9f132d21-dd7b-44da-8878-27e54c591849-c000.snappy.parquet","size":1738,"isDir":false,"modificationTime":1777968851069,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/gurman/End-To-End-Fraud-Detection-Engine/data/gold_layer/velocity_fraud/part-00135-167b2dce-7cab-4936-8684-480ae1e67467-c000.snappy.parquet","size":1738,"isDir":false,"modificationTime":1777968859601,"blockReplication":1,"blockSize":33554432,"action":"add"}
