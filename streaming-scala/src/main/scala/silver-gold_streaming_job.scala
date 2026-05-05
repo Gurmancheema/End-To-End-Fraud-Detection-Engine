@@ -48,11 +48,11 @@ object silver_gold_streaming{
     // saving the fraudulent transactions in the gold/fraud layer
 
     val highamount_fraud_transactions = highAmountTagged.writeStream
-                                                        .format("parquet")
-                                                        .option("path","../data/gold_layer/high_amount_fraud")
-                                                        .outputMode("append")
-                                                      .option("checkpointLocation","/tmp/checkpoints-highamount_parquet")
-                                                      .start()
+                                                      .format("parquet")
+                                                      .option("path","../data/gold_layer/high_amount_fraud")
+                                                      .outputMode("append")
+                                                      .option("checkpointLocation","/tmp/checkpoints-highamount_parquet").start()
+
     val velocity_fraud_transactions = velocityTagged.writeStream
                                                   .format("parquet")
                                                   .option("path","../data/gold_layer/velocity_fraud")
@@ -81,7 +81,7 @@ object silver_gold_streaming{
        highamount_fraud_transactions.awaitTermination()
        velocity_fraud_transactions.awaitTermination()
        
-       high_amount_tagged_fraud.awaitTermination()
+       highamount_tagged_fraud.awaitTermination()
        velocity_tagged_fraud.awaitTermination()
     }
     catch {
@@ -90,7 +90,7 @@ object silver_gold_streaming{
         highamount_fraud_transactions.stop()
         velocity_fraud_transactions.stop()
 
-        high_amount_tagged_fraud.stop()
+        highamount_tagged_fraud.stop()
         velocity_tagged_fraud.stop()
         spark.stop()
     }

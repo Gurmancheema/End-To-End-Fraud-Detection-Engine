@@ -55,7 +55,7 @@ def generate_normal_transaction():
 # ----------------------------
 def generate_high_amount_transaction():
     transaction = generate_normal_transaction()
-    transaction["transaction_amount"] = round(random.unfiform(30000.0, 60000.0),2)
+    transaction["transaction_amount"] = round(random.uniform(30000.0, 60000.0),2)
     return transaction
 
 # ----------------------------
@@ -63,7 +63,7 @@ def generate_high_amount_transaction():
 # ----------------------------
 
 def generate_high_velocity_transaction(user_id):
-    transaction = {}
+    transaction = []
 
     for _ in range(6): # since the no of transactions should be 5 atleast
         transactions = {
@@ -103,7 +103,7 @@ if __name__ == "__main__":
             rand = random.random()
 
             # 80 % normal transactions 
-            if rand < 0.8
+            if rand < 0.8:
                 event = generate_normal_transaction()
 
                 print("Sending Normal Event:", event)
@@ -111,14 +111,14 @@ if __name__ == "__main__":
                 producer.send("transactions", event)
             
             # 10% fraud transactions
-            elif rand < 0.9
+            elif rand < 0.9:
                 event = generate_high_amount_transaction()
                 
                 print("HIGH AMOUNT", event)
                 producer.send("transactions", event)
             
             # 10% velocity fraud transactions
-            else
+            else:
                 user_id = random.choice(USERS)
                 event = generate_high_velocity_transaction(user_id)
 
@@ -129,7 +129,7 @@ if __name__ == "__main__":
 
             producer.flush()
 
-            time.sleep(random,randint(2,5))
+            time.sleep(random.randint(2,5))
 
     except KeyboardInterrupt:
         print("\nStopping Producer...")
