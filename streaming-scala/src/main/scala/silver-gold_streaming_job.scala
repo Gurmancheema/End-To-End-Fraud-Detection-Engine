@@ -75,6 +75,44 @@ object silver_gold_streaming{
                                                           .option("checkpointLocation","/tmp/checkpoints-velocity")
                                                           .start()
 
+  // since both the fraud rules are sinking properrly now, it iss time to build a unified fraud sink
+  // all transactions which are fraudulent by either of the rules shall be in same dataframe
+  // To achieve this, first step is to match the schemas of both the dataframes
+
+  // STEP 1: Expand Velocity fraud to transaction level
+  // since the velocity fraud's schema currently shows abstract schema
+  // therefore, joining it back to transformed silver layer dataset to get more information on fraudulent transacs.
+
+  val velocityExpandeddf = velocityTagged.withColumn("start",col("window.start"))
+                                         .withColumn("end",col("windows.end"))
+                                         .drop(col("window"))
+                                         .join(incoming_stream_from_silver,
+                                               col("user_id") === incoming_stream_from_silver("user_id") &&
+            incoming_stream_from_silver("transaction_time").between(col("start"),col("end")))
+
+  // sinking this dataframe to console for debugging purposes
+
+  val sinking_VelocityExpandeddf = velocityExpandeddf.writeStream.format("console")
+                                                     .outputMode("update")
+                                                     .option("checkpointLocations","/tmp/checkpoints-expandedvelocity")
+                                                     .start()
+
+
+  // STEP 2: Nomalizing the schema for velocityExpandeddf
+
+  val cleaned_velocity_df = velocityExpandeddf.withColumn("triggered_rule",lit("HIGH_VELOCITY"))
+                                              .select("transaction_id",
+                                                      "user_id",
+                                                      "merchant_id",
+                                                      "transaction_amount",
+                                                      "transaction_time",
+                                                      "device_id",
+                                                      "location",
+                                                      "is_international",
+                                                      "ingestion_time",
+                                                      "triggered_rule"
+                                                      )
+
 
     try {
        // sinking_stream_to_console.awaitTermination()
@@ -83,6 +121,8 @@ object silver_gold_streaming{
        
        highamount_tagged_fraud.awaitTermination()
        velocity_tagged_fraud.awaitTermination()
+
+       sinking_VelocityExpandeddf.awaitTermination()
     }
     catch {
       case e: Exception =>
@@ -92,6 +132,7 @@ object silver_gold_streaming{
 
         highamount_tagged_fraud.stop()
         velocity_tagged_fraud.stop()
+        sinking_VelocityExpandeddf.stop()
         spark.stop()
     }
   }
