@@ -134,7 +134,7 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 # GCP credentials
-configs/gcp/fraud-detection-engine-0001-83bdb1e468ad.json
+configs/gcp/
 
 # Environments
 .env
